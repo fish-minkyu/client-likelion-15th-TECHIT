@@ -1,5 +1,7 @@
 package com.example.api;
 
+import com.example.api.client.ArticleRestClient;
+import com.example.api.client.ArticleService;
 import com.example.api.client.ArticleTemplateClient;
 import com.example.api.client.ArticleWebClient;
 import com.example.api.dto.ArticleDto;
@@ -17,25 +19,46 @@ import java.util.List;
 public class ArticleController {
   private final ArticleTemplateClient templateClient;
   private final ArticleWebClient articleWebClient;
+  private final ArticleRestClient restClient;
+  private final ArticleService service;
 
   @PostMapping
   public ArticleDto create(
     @RequestBody
     ArticleDto dto
   ) {
-    return articleWebClient.create(dto);
+    // RestTemplate
+//    return templateClient.create(dto);
+
+    // WebClient
+//    return articleWebClient.create(dto);
+
+    // RestClient
+//    return restClient.create(dto);
+
+    // HTTP Interface
+    return service.create(dto);
   }
 
   @GetMapping("/{id}")
   public ArticleDto readOne(
     @PathVariable("id") Long id
   ) {
+    // RestTemplate
+//    return templateClient.readOne(id);
+
+    // WebClient
     return articleWebClient.readOne(id);
   }
 
   @GetMapping
   public List<ArticleDto> readAll() {
-    return templateClient.readAll();
+
+    // RestTemplate
+//    return templateClient.readAll();
+
+    // RestClient
+    return restClient.readAll();
   }
 
   @PutMapping("/{id}")

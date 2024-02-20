@@ -1,5 +1,6 @@
 package com.example.api.client;
 
+import com.example.api.config.RestTemplateConfig;
 import com.example.api.dto.ArticleDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

@@ -18,7 +18,9 @@ import java.util.Map;
 public class ArticleWebClient {
   private final WebClient webClient;
 
+  // POST
   public ArticleDto create(ArticleDto dto) {
+    // Way1.
     // WebClient는 HTTP 요청을 Build 한다고 생각해보자.
     ArticleDto response = webClient
       // POST 요청이다.
@@ -36,6 +38,7 @@ public class ArticleWebClient {
 
     log.info("response: {}", response);
 
+    // Way2.
     ResponseEntity<ArticleDto> responseEntity =  webClient
       // POST 요청이다.
       .post()
@@ -58,6 +61,7 @@ public class ArticleWebClient {
   // GET
   // readOne
   public ArticleDto readOne(Long id) {
+    // Way1.
     ArticleDto response = webClient
       .get()
       .uri("/articles/{id}", id)
@@ -67,6 +71,7 @@ public class ArticleWebClient {
 
     log.info("response: {}", response);
 
+    // Way2.
     Map<String, Object> uriVariables = new HashMap<>();
     uriVariables.put("id", id);
     response = webClient
@@ -93,5 +98,4 @@ public class ArticleWebClient {
 
     return response;
   }
-
 }

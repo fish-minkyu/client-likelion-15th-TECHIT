@@ -6,10 +6,30 @@
 
 - RestTemplate
 <div>RestTemplateConfig</div>
-<div>ArticleTemplateClient</div>
 <div>ArticleDto</div>
+<div>ArticleTemplateClient</div>
 <div>ArticleController</div>
+<hr>
 
+- WebClient
+<div>WebClientConfig</div>
+<div>ArticleDto</div>
+<div>ArticleWebClient</div>
+<div>ArticleController</div>
+<hr>
+
+- RestClient
+<div>RestClientConfig</div>
+<div>ArticleDto</div>
+<div>ArticleRestClient</div>
+<div>ArticleController</div>
+<hr>
+
+- HTTP Interface
+<div>ArticleHttpInterface</div>
+<div>ArticleDto</div>
+<div>ArticleService: implements가 아닌 Bean 주입으로 ArticleHttpInterface 사용</div>
+<div>ArticleController</div>
 </details>
 
 

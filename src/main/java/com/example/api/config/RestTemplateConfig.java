@@ -12,7 +12,7 @@ public class RestTemplateConfig {
   @Bean
   // RestTemplateBuilder를 활용해 전체 서비스에서 사용할
   // 기본 설정을 갖춘 RestTemplate을 Bean으로 등록 가능
-  public RestTemplate 능defaultRestTemplate(
+  public RestTemplate defaultRestTemplate(
     // Bean 객체로 주입을 받을 수 있는 RestTemplateBuilder
     RestTemplateBuilder templateBuilder
   ) {
