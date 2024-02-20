@@ -1,6 +1,7 @@
 package com.example.api;
 
 import com.example.api.client.ArticleTemplateClient;
+import com.example.api.client.ArticleWebClient;
 import com.example.api.dto.ArticleDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -15,20 +16,21 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ArticleController {
   private final ArticleTemplateClient templateClient;
+  private final ArticleWebClient articleWebClient;
 
   @PostMapping
   public ArticleDto create(
     @RequestBody
     ArticleDto dto
   ) {
-    return templateClient.create(dto);
+    return articleWebClient.create(dto);
   }
 
   @GetMapping("/{id}")
   public ArticleDto readOne(
     @PathVariable("id") Long id
   ) {
-    return templateClient.readOne(id);
+    return articleWebClient.readOne(id);
   }
 
   @GetMapping
