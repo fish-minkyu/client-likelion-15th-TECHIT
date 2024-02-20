@@ -1,37 +1,4 @@
-# HTTP Client
-- 2024.02.19 `15주차`
-
-<details>
-<summary><strong>Page</strong></summary>
-
-- RestTemplate
-<div>RestTemplateConfig</div>
-<div>ArticleTemplateClient</div>
-<div>ArticleDto</div>
-<div>ArticleController</div>
-
-</details>
-
-
-## 스팩
-
-- Spring Boot 3.2.2
-- Spring Web
-- Lombok
-
-## Key Point
-
-
-
-
-
-
-
-
-<details>
-<summary><strong>Lecture Page</strong></summary>
-
-[# Spring HTTP Clients
+# Spring HTTP Clients
 
 Spring에서 제공하는 HTTP Client 들을 활용해서
 이전에 만들었던 [Article 서비스](https://github.com/edujeeho0/likelion-backend-8-rest)에 요청을 보내보자.
@@ -146,5 +113,4 @@ public class ArticleController {
 ```
 
 이렇게 `interface`를 이용해 실행중에 어떻게 동작할지를 결정하는 디자인 패턴을 [Strategy Pattern](https://en.wikipedia.org/wiki/Strategy_pattern)
-이라 부른다.]()
-</details>
+이라 부른다.
