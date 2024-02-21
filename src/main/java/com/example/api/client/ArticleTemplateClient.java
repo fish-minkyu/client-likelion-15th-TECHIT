@@ -22,7 +22,7 @@ import java.util.Map;
 @RequiredArgsConstructor
 // RestTemplate 객체를 활용하여
 // RestTemplate가 가지고 있는 method를 호출했을 때, HTTP 요청이 보내지는 방법이다.
-public class ArticleTemplateClient {
+public class ArticleTemplateClient implements ArticleClient {
   private final RestTemplate restTemplate;
 
   // POST 요청

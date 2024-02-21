@@ -324,6 +324,7 @@ public class RestTemplateConfig {
 ```
 </details>
 
+<hr>
 
 - `WebClient`
 <details>
@@ -468,6 +469,8 @@ public class WebClientConfig {
 ```
 </details>
 
+<hr>
+
 - `RestClient`
 <details>
 <summary><strong>RestClient - Page</strong></summary>
@@ -565,6 +568,8 @@ public class RestClientConfig {
   }
 ```
 </details>
+
+<hr>
 
 - `HTTP Interface`
 
@@ -676,6 +681,63 @@ public class ArticleService {
 
 </details>
 
+<hr>
+
+- `ArticleClient(Interface) implements한 방식`
+
+<details>
+<summary><strong>ArticleClient - Page</strong></summary>
+
+1. ArticleClient Interface
+: RestTemplate, WebClient, HTTP Interface, RestClient 이 4가지 기능을 인터페이스로 묶는다.  
+[ArticleClient](/src/main/java/com/example/api/client/ArticleClient.java)  
+
+```java
+   public interface ArticleClient {
+   ArticleDto create(ArticleDto dto);
+   ArticleDto readOne(Long id);
+   List<ArticleDto> readAll();
+   ArticleDto update(Long id, ArticleDto dto);
+   void delete(Long id);
+   }
+```
+
+2. TestController
+: ArticleClient로 공통으로 묶은   
+RestTemplate, WebClient, HTTP Interface, RestClient 이 4가지 기능 중 하나를  
+생성자 주입으로 넣는다.  
+[TestController](/src/main/java/com/example/api/TestController.java)  
+
+```java
+@Slf4j
+@RestController
+@RequestMapping("/test")
+public class TestController {
+  private final ArticleClient service;
+
+  // ArticleClient 인터페이스 생성자 주입
+  // 구현 로직에 상관없이 공통된 기능을 인터페이스로 묶어서 implements를 받고
+  // 생성자 주입은 구현한 4가지 방법(RestTemplate, WebClient, Http Interface, Restclient) 중에
+  // 아무거나 넣어서 동작할 수 있게 할 수 있다.
+  // (이렇게 함으로서, 결합성을 줄일 수 있다.)
+  public TestController(
+    // RestTemplate
+    ArticleTemplateClient articleTemplateClient
+
+    // HTTP Interface
+//    ArticleService articleService
+  ) {
+    // RestTemplate
+    this.service = articleTemplateClient;
+
+    // HTTP Interface
+//    this.service = articleService;
+  }
+  // ...
+}
+```
+
+</details>
 
 ## GitHub
 

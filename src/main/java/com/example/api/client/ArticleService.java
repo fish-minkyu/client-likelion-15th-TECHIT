@@ -10,7 +10,7 @@ import org.springframework.web.service.invoker.HttpServiceProxyFactory;
 import java.util.List;
 
 @Component
-public class ArticleService {
+public class ArticleService implements ArticleClient {
   // 사용할 때는 구현체를 만들어 주어야 한다.
   private final ArticleHttpInterface exchange;
 

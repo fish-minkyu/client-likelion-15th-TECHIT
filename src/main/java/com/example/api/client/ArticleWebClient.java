@@ -15,7 +15,7 @@ import java.util.Map;
 @Slf4j
 @Component
 @RequiredArgsConstructor
-public class ArticleWebClient {
+public class ArticleWebClient implements ArticleClient {
   private final WebClient webClient;
 
   // POST
@@ -97,5 +97,29 @@ public class ArticleWebClient {
       .block();
 
     return response;
+  }
+
+  // update
+  public ArticleDto update(Long id, ArticleDto dto) {
+    ArticleDto response = webClient.put()
+      .uri("/articles")
+      .bodyValue(dto)
+      .retrieve()
+      .bodyToMono(ArticleDto.class)
+      .block();
+
+    return response;
+  }
+
+  // delete
+  public void delete(Long id) {
+    Map<String, Object> uriVariables = new HashMap<>();
+    uriVariables.put("id", id);
+    ResponseEntity<?> responseEntity = webClient.delete()
+      .uri("/articles/{id}", uriVariables)
+      .retrieve()
+      .toBodilessEntity()
+      .block();
+    log.info("status code: {}", responseEntity.getStatusCode());
   }
 }
